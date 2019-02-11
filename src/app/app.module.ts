@@ -17,6 +17,8 @@ import {LeaveReqModule} from './leaveReq/leave-req.module';
 
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,6 +35,8 @@ import {LeaveReqModule} from './leaveReq/leave-req.module';
     DialogModule,
     FlexLayoutModule,
     LeaveReqModule,
+    
+    
    
   ],
   providers: [SOAPHandlerModule],

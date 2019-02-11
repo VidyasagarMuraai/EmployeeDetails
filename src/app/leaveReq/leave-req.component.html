@@ -1,40 +1,47 @@
 <div class="container" fxLayout="row nowrap"  >
-    <div display= "flex"  fxFlex="50%" >
+    <div display= "flex"  fxFlex="50%" style="padding-left: 199px">
         <mat-form-field > 
-            <input  placeholder="No of Leaves Applied"  matInput disabled>
+            <input  placeholder="No of Leaves Applied" [(ngModel)]="remaining_leaves" name="remaining_leaves" matInput disabled>
         </mat-form-field>
    </div>
    <div display= "flex" fxFlex="50%">
         <mat-form-field > 
-        <input  placeholder="Remaining Leaves"  matInput disabled>
+        <input  placeholder="Remaining Leaves" [(ngModel)]="applied_leaves" name="applied_leaves" matInput disabled>
         </mat-form-field>
    </div>
 </div>
-<div class="container" fxLayout="row wrap" fxLayoutGap="20px"  >
+<div class="container" fxLayout="row wrap" fxLayoutGap="20px" fxLayoutAlign="space-evenly center" >
     <div>
         <mat-form-field > 
-        <input  placeholder="Start Date" type="datetime-local"  matInput >
+        <input [(ngModel)]="startDate" name="startDate" placeholder="Start Date" type="datetime-local" (change)="validation()"  matInput >
         </mat-form-field>
     </div>
     <div>
         <mat-form-field>
-        <input  placeholder="End Date"  type="datetime-local"  matInput>
+        <input [(ngModel)]="endDate" name="endDate" placeholder="End Date"  type="datetime-local" (change)="validation()"  matInput>
         </mat-form-field>
     </div>
     <div>
         <mat-form-field>
-        <input  placeholder="Reason for Leave" matInput>
+        <input [(ngModel)]="reasonLeave" name="reasonLeave" placeholder="Reason for Leave" matInput>
         </mat-form-field>
     </div>
     <div>  
         <mat-form-field >
-        <input placeholder="No of leaves" matInput disabled>
+        <input [(ngModel)]="noOfLeaves" name="noOfLeaves" placeholder="No of leaves" matInput disabled>
         </mat-form-field>
     </div>
    
 </div>
 <div  fxLayoutAlign="center" fxLayoutGap="10px" >
-        <button mat-raised-button  color="primary" (click)="setLeavesreqIntoDB()" >Submit</button>
+        <button mat-raised-button  color="primary" (click)="leaveDetails()" >Submit</button>
         <button mat-raised-button  color="warn" (click)="close()">Cancel</button>
 </div>
+<highcharts-chart 
+  [Highcharts]="Highcharts"
+
+  [constructorType]="chartConstructor"
+  [options]="chartOptions"
+  style="width: 100%; height: 400px; display: block;"
+></highcharts-chart>
 

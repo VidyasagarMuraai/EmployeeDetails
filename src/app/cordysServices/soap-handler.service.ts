@@ -190,6 +190,15 @@ import {
         +'<FATHER_NAME>'+data.fname+'</FATHER_NAME><MOTHER_NAME>'+data.mname+'</MOTHER_NAME><STATUS>'+data.status+'</STATUS> '
         +'</USER_DETAILS></new></tuple></UpdateUserDetails></SOAP:Body></SOAP:Envelope>','xml')
       }
+      public saveLeaveReqIntoDB(data:any){
+        return this.httpPostRequest(SOAPHandlerService.getGateWayURL(),
+        '<SOAP:Envelope xmlns:SOAP="http://schemas.xmlsoap.org/soap/envelope/"><SOAP:Body>'
+         +'<UpdateLeaveManagement xmlns="http://schemas.cordys.com/Wsapp" reply="yes" commandUpdate="no" preserveSpace="no" batchUpdate="no">'
+         +'<tuple><new><LEAVE_MANAGEMENT qAccess="0" qConstraint="0" qInit="0" qValues=""><START_DATE>'+data.start_date+'</START_DATE>'
+          +'<END_DATE>'+data.end_date+'</END_DATE><NO_OF_LEAVES>'+data.no_of_leaves+'</NO_OF_LEAVES><PURPOSE_OF_LEAVE>'+data.reason_leave+'</PURPOSE_OF_LEAVE>'
+          +'<STATUS></STATUS><LEAVE_ID></LEAVE_ID><USER_ID>'+data.userID+'</USER_ID></LEAVE_MANAGEMENT>'
+          +'</new></tuple></UpdateLeaveManagement></SOAP:Body></SOAP:Envelope>','xml');
+        }
 
 
   }
