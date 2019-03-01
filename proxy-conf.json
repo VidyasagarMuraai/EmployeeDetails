@@ -13,6 +13,7 @@
             "changeOrigin": true,
             "pathRewrite": {"^/target" : ""}
             }
+          
 }
 
     

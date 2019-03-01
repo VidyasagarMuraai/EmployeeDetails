@@ -13,11 +13,9 @@ import {LmsMaterialModule} from './lms-material.module';
 import {DialogModule} from './dialog/dialog.module';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {LeaveReqModule} from './leaveReq/leave-req.module';
-
-
-
-
-
+import {AppLayoutModule} from './appLayout/app-layout.module';
+import {CardLayoutModule} from './card/card-layout.module';
+import {FoodModule} from './FoodAndTravel/food.module';
 
 @NgModule({
   declarations: [
@@ -35,9 +33,11 @@ import {LeaveReqModule} from './leaveReq/leave-req.module';
     DialogModule,
     FlexLayoutModule,
     LeaveReqModule,
+    AppLayoutModule,
+    CardLayoutModule,
+    FoodModule,
     
     
-   
   ],
   providers: [SOAPHandlerModule],
   

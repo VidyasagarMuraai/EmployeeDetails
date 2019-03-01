@@ -199,6 +199,45 @@ import {
           +'<STATUS></STATUS><LEAVE_ID></LEAVE_ID><USER_ID>'+data.userID+'</USER_ID></LEAVE_MANAGEMENT>'
           +'</new></tuple></UpdateLeaveManagement></SOAP:Body></SOAP:Envelope>','xml');
         }
+      public createDocumentInCS(data:any){
+
+       return this.httpPostRequest(SOAPHandlerService.getGateWayURL(),
+       '<SOAP:Envelope xmlns:SOAP="http://schemas.xmlsoap.org/soap/envelope/">'
+       +'<SOAP:Header><OTAuthentication xmlns="urn:api.ecm.opentext.com">'
+       +'<AuthenticationToken>'+data.authToken+'</AuthenticationToken></OTAuthentication>'
+       +'</SOAP:Header><SOAP:Body>'
+       +'<CreateDocument xmlns="urn:DocMan.service.livelink.opentext.com">'
+       +'<attach><FileName xmlns="urn:Core.service.livelink.opentext.com">'+data.fileName+'</FileName>'
+       +'<FileSize xmlns="urn:Core.service.livelink.opentext.com">'+data.fileSize+'</FileSize>'
+       +'<Contents xmlns="urn:Core.service.livelink.opentext.com">'+data.content+'</Contents>'
+       +'<CreatedDate xmlns="urn:Core.service.livelink.opentext.com">2019-01-04</CreatedDate>'
+       +'<ModifiedDate xmlns="urn:Core.service.livelink.opentext.com">2019-01-04</ModifiedDate>'
+       +'</attach><parentID>376047</parentID><name>'+data.fileName+'</name>'
+       +'<comment>'+data.Description+'</comment></CreateDocument>'
+       +'</SOAP:Body></SOAP:Envelope>','xml');
+
+      }
+      public authicateUser(){
+        let reqest={
+          userName:"processadmi",
+          userPassword:"Muraai$4321"
+        };
+        return this.callOTPSSoapService(
+          "AuthenticateUser",
+          "urn:Core.service.livelink.opentext.com",
+          reqest,
+          null
+        )
+      }
+      public insertFoodExpense(data:any){
+        return this.httpPostRequest(SOAPHandlerService.getGateWayURL(),
+        '<SOAP:Envelope xmlns:SOAP="http://schemas.xmlsoap.org/soap/envelope/"><SOAP:Body>'
+        +'<UpdateFoodExpense xmlns="http://schemas.cordys.com/Wsapp" reply="yes" commandUpdate="no" preserveSpace="no" batchUpdate="no">'
+        +'<tuple><new><FOOD_EXPENSE qAccess="0" qConstraint="0" qInit="0" qValues="">'
+        +'<EMPLOYEE_NAME>'+data.empName+'</EMPLOYEE_NAME><RECIPE>'+data.recipe+'</RECIPE><COST_OF_RECIPE>'+data.amount+'</COST_OF_RECIPE>'
+        +'<ORDERED_DATE>'+data.orderDate+'</ORDERED_DATE><EMP_ID>'+data.empID+'</EMP_ID><TEMP1>'+data.comments+'</TEMP1>'
+        +'</FOOD_EXPENSE></new></tuple></UpdateFoodExpense></SOAP:Body></SOAP:Envelope>','xml');
+      }
 
 
   }

@@ -23,7 +23,8 @@ export class LeaveReqComponent implements OnInit {
    }
 
   ngOnInit() {
-     this.userid="1"
+     //this.userid="2"
+     this.userid=localStorage.getItem("userID");
     this.soapHandler.getUserDetailsBasedOnID(this.userid).subscribe(
       (reponse:any)=>{
         let tupleNodes = $.cordys.json.findObjects(reponse, 'USER_DETAILS');
@@ -66,47 +67,6 @@ export class LeaveReqComponent implements OnInit {
      this.noOfLeaves=diffDays;
    }
   
-   chartOptions = {
-    chart: {
-      type: "column"
-    },
-    title: {
-      text: "No of Leaves Per Month<br>..."
-    },
-    yAxis: {
-      title: {
-          text: 'Leaves'
-      }
-  },
-   xAxis: {
-      title: {
-          text: 'Month'
-      }
-  },
-  series: [
-    {
-      name: 'Leaves',
-      data: [1,3,4,4,5,0,4],
-      "drilldown": "Leaves"
-  }],
-  "drilldown":{
-    "series": [{
-      "name": "Leaves",
-      "id":"Leaves",
-      "data":[
-        [
-          "jan",
-            1
-        ],
-        [
-          "feb",
-            3
-        ]
-
-      ]
-    }]
-  }
-
-  };
+  
   
 }

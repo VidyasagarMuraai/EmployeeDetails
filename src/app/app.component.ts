@@ -1,40 +1,20 @@
 import { Component, OnInit,ViewChild} from '@angular/core';
-import {Router} from '@angular/router';
-import {MatIconModule,MatSidenavModule} from '@angular/material';
-import {FlexLayoutModule} from '@angular/flex-layout';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
-import { SOAPHandlerService} from './cordysServices/soap-handler.service';
-import {MatPaginator, MatTableDataSource} from '@angular/material';
-import {DialogComponent} from './dialog/dialog.component';
+
 declare var $:any;
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
+  template: ' <router-outlet></router-outlet>',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'lms';
-  loginID:any;
-  password:any;
-  successlogin:any;
-  constructor(private soapService:SOAPHandlerService,private router:Router){
-  }
-  public createNewUser(){
+export class AppComponent implements OnInit {
+ 
   
-    this.router.navigate(['/select/Newuser']); 
-
+  constructor(){
   }
-  public empDetails(){
-    this.router.navigate(['/select/EmpDetails']); 
+  ngOnInit() {
+    
+    
   }
-  public redirectToHome(){
-    this.router.navigate(['/select/dashboard']); 
-  }
-  public redirectToLogin(){
-    this.router.navigate(['/login']); 
-  }
-  public createLeaveReq(){
-    this.router.navigate(['/select/leaveReq']); 
-  }
+  
 
 }

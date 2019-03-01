@@ -18,13 +18,16 @@ export class LoginComponent implements OnInit {
   loginID:any;
   username:any;
   val:any;
+  Id:any;
+  role:any;
+
   
  
 
   successlogin:any;
   ngOnInit() {
     this.route.navigate(['/login']);
-  
+     
       this.registerForm = this.formBuilder.group({
         username: ['', Validators.required],
         password: ['', Validators.required],
@@ -40,7 +43,6 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     
     this.submitted = true;
-   
     if (this.registerForm.invalid) {
         return;
     }
@@ -58,6 +60,11 @@ checkValidUser(){
            return false;
       }
       this.val=tupleNodes[0].count_user;
+      this.Id=tupleNodes[0].USER_ID;
+      this.role=tupleNodes[0].USER_ROLE;
+      localStorage.setItem("userID",this.Id);
+      localStorage.setItem("userRole",this.role);
+      localStorage.setItem("userName",this.registerForm.controls.username.value);
       if(this.val=="0")
 			{
         alert("User Id not Activated");
@@ -68,7 +75,9 @@ checkValidUser(){
 			  alert("Username and password cannot be blank");
 			  return false;
       }
-      this.route.navigate(['/dashboard']); 
+      localStorage.setItem("loginDisplay","show");
+      this.route.navigate(['/select/dashboard']); 
+      
       
      },
      (err)=>{

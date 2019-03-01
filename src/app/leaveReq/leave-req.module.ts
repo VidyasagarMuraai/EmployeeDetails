@@ -5,7 +5,7 @@ import {AppRoutingModule} from '../app-routing.module';
 import { LmsMaterialModule} from '../lms-material.module';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {  FormsModule } from '@angular/forms';
-import { HighchartsChartModule } from 'highcharts-angular';
+
 import * as drilldown from 'Highcharts/modules/drilldown';
 import * as highdata from 'Highcharts/modules/data';
 
@@ -19,7 +19,7 @@ import * as highdata from 'Highcharts/modules/data';
     LmsMaterialModule,
     FlexLayoutModule,
     FormsModule,
-    HighchartsChartModule,
+  
     
     
   ],
